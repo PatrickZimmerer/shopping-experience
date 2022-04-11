@@ -1,0 +1,18 @@
+.cartWrap {
+    position: fixed;
+    bottom: 16px;
+    height: 80px;
+    border-radius: 100%;
+    display: flex;
+    width: 80px;
+    right: 16px;
+    background-color: hsl(242deg 100% 50% / 64%);
+    align-items: center;
+    justify-content: center;
+    transition: 125ms ease-in-out;
+}
+
+.cartWrap:hover {
+    background-color: rgba(8, 0, 255, 0.924);
+    cursor: pointer;
+}
