@@ -38,7 +38,7 @@ function App() {
 				loading={loading}
 				setData={data}
 			/>
-			<ShoppingCart titles={titles} images={images} prices={prices} amounts={amounts} />
+			<ShoppingCart titles={titles} prices={prices} amounts={amounts} />
 			<Footer />
 		</div>
 	);

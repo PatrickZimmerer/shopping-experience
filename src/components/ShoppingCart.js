@@ -9,28 +9,33 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 function ShoppingCart(props) {
 	let [modalIsOpen, setModalIsOpen] = useState(false);
 
+	const amounts = props.amounts;
+	console.log(amounts);
+	if (amounts.length > 0) {
+		var sum = amounts.reduce((x, y) => x + y);
+		console.log(sum);
+	} else {
+		sum = 0;
+	}
+
 	function openShoppingModal() {
 		setModalIsOpen(true);
-		console.log(modalIsOpen);
 	}
 
 	function closeModal() {
 		setModalIsOpen(false);
-		console.log(props);
-		console.log(modalIsOpen);
 	}
 
 	return (
 		<div>
 			<div className={classes.cartWrap} onClick={openShoppingModal}>
-				<p className={classes.amountCounter}>7</p>
+				<p className={classes.amountCounter}>{sum}</p>
 				<FontAwesomeIcon icon={faShoppingCart} className={classes.icon}></FontAwesomeIcon>
 			</div>
 			<div>
 				{modalIsOpen && (
 					<Modal
 						titles={props.titles}
-						images={props.images}
 						prices={props.prices}
 						amounts={props.amounts}
 						onCancel={closeModal}

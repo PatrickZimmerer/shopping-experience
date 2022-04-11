@@ -19,3 +19,17 @@
     right: 32px;
     cursor: pointer;
 }
+
+.shoppingCartItemContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.shoppingCartItemContainer p {
+    width: 20%;
+}
+
+.deleteIcon {
+    cursor: pointer;
+}
