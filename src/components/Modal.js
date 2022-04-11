@@ -1,7 +1,6 @@
 import classes from "./Modal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 function Modal(props) {
 	function cancelHandler() {
@@ -14,6 +13,7 @@ function Modal(props) {
 			</div>
 			<h1>Your Shopping Cart:</h1>
 			<div>Items Here</div>
+			<div>Products: </div>
 		</div>
 	);
 }

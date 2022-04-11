@@ -1,6 +1,6 @@
 .cartWrap {
     position: fixed;
-    bottom: 16px;
+    top: 10px;
     height: 80px;
     border-radius: 100%;
     display: flex;
@@ -15,4 +15,26 @@
 .cartWrap:hover {
     background-color: rgba(8, 0, 255, 0.924);
     cursor: pointer;
+}
+
+.amountCounter {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    position: absolute;
+    border-radius: 100%;
+    top: 0;
+    height: 24px;
+    width: 24px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-block-end: 0;
+    margin-block-start: 0;
+}
+
+.icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 1.4rem;
 }
