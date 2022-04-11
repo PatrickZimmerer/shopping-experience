@@ -14,7 +14,6 @@ function Modal(props) {
 		titles.splice(i, 1);
 		prices.splice(i, 1);
 		amounts.splice(i, 1);
-		Modal(props);
 	}
 
 	function save() {
