@@ -6,7 +6,7 @@ import Backdrop from "./Backdrop";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
-function ShoppingCart() {
+function ShoppingCart(props) {
 	let [modalIsOpen, setModalIsOpen] = useState(false);
 
 	function openShoppingModal() {
@@ -16,6 +16,7 @@ function ShoppingCart() {
 
 	function closeModal() {
 		setModalIsOpen(false);
+		console.log(props);
 		console.log(modalIsOpen);
 	}
 
@@ -26,7 +27,15 @@ function ShoppingCart() {
 				<FontAwesomeIcon icon={faShoppingCart} className={classes.icon}></FontAwesomeIcon>
 			</div>
 			<div>
-				{modalIsOpen && <Modal onCancel={closeModal} />}
+				{modalIsOpen && (
+					<Modal
+						titles={props.titles}
+						images={props.images}
+						prices={props.prices}
+						amounts={props.amounts}
+						onCancel={closeModal}
+					/>
+				)}
 				{modalIsOpen && <Backdrop onClick={closeModal} />}
 			</div>
 		</div>

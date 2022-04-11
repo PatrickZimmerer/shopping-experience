@@ -1,74 +1,57 @@
-import { useEffect, useState } from "react";
 import classes from "./Products.module.css";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-function Products() {
+function Products(props) {
 	function addToCart(product) {
-		let i = titles.indexOf(product.title);
+		let i = props.titles.indexOf(product.title);
 		if (i === -1) {
-			titles.push(product.title);
-			prices.push(product.price);
-			images.push(product.image);
-			amounts.push(1);
+			props.titles.push(product.title);
+			props.prices.push(product.price);
+			props.images.push(product.image);
+			props.amounts.push(1);
 		} else {
-			amounts[i]++;
+			props.amounts[i]++;
 		}
-		// save();
+		// console.log(props.titles, props.amounts);
+		save();
 	}
-	// function save() {
-	// 	let titlesAsText = JSON.stringify(titles);
-	// 	let imagesAsText = JSON.stringify(images);
-	// 	let pricesAsText = JSON.stringify(prices);
-	// 	let amountsAsText = JSON.stringify(amounts);
-	// 	localStorage.setItem("titles", titlesAsText);
-	// 	localStorage.setItem("images", imagesAsText);
-	// 	localStorage.setItem("prices", pricesAsText);
-	// 	localStorage.setItem("amounts", amountsAsText);
-	// }
+	function save() {
+		let titlesAsText = JSON.stringify(props.titles);
+		let imagesAsText = JSON.stringify(props.images);
+		let pricesAsText = JSON.stringify(props.prices);
+		let amountsAsText = JSON.stringify(props.amounts);
+		localStorage.setItem("titles", titlesAsText);
+		localStorage.setItem("images", imagesAsText);
+		localStorage.setItem("prices", pricesAsText);
+		localStorage.setItem("amounts", amountsAsText);
+	}
 	// function load() {
 	// 	let titlesAsText = localStorage.getItem("titles");
 	// 	let imagesAsText = localStorage.getItem("images");
 	// 	let pricesAsText = localStorage.getItem("prices");
 	// 	let amountsAsText = localStorage.getItem("amounts");
 	// 	if (titlesAsText) {
-	// 		titles = JSON.parse(titlesAsText);
-	// 		images = JSON.parse(imagesAsText);
-	// 		prices = JSON.parse(pricesAsText);
-	// 		amounts = JSON.parse(amountsAsText);
+	// 		props.titles = JSON.parse(titlesAsText);
+	// 		props.images = JSON.parse(imagesAsText);
+	// 		props.prices = JSON.parse(pricesAsText);
+	// 		props.amounts = JSON.parse(amountsAsText);
 	// 	}
-	// 	console.log(titles, images, amounts);
-	// }
-	var titles = [];
-	var prices = [];
-	var amounts = [];
-	var images = [];
-
-	const [loading, setLoading] = useState(false);
-	const [data, setData] = useState([]);
-
 	// load();
-	useEffect(() => {
-		setLoading(true);
-		axios({
-			method: "GET",
-			url: "https://fakestoreapi.com/products",
-		})
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => alert(error, "occured please try again later"))
-			.finally(() => setLoading(false));
-	}, []);
+	// 	// 	console.log(titles, images, amounts);
+	// }
+	// let titles = [];
+	// let prices = [];
+	// let amounts = [];
+	// let images = [];
 
 	return (
 		<div className={classes.productsWrap}>
-			{loading && (
+			{props.loading && (
 				<div>
 					<h1>Loading...</h1>
 				</div>
 			)}
-			{data.map((product) => (
+			{props.setData.map((product) => (
 				<div
 					onClick={() => addToCart(product)}
 					key={product.id}

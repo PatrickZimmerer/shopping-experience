@@ -13,7 +13,7 @@ function Modal(props) {
 			</div>
 			<h1>Your Shopping Cart:</h1>
 			<div>Items Here</div>
-			<div>Products: </div>
+			<div>Products: {props.titles[0]} </div>
 		</div>
 	);
 }
