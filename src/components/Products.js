@@ -3,6 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function Products(props) {
+	/**
+	 * addet das jeweils geklickte produkt in das Shoppingcart array,
+	 * wenn schon vorhanden erhöht es die Anzahl um 1
+	 * @param {product} product ist ein Objekt aus dem Array aller produkte
+	 */
 	function addToCart(product) {
 		let i = props.titles.indexOf(product.title);
 		if (i === -1) {
@@ -16,9 +21,17 @@ function Products(props) {
 		save();
 	}
 
+	/**
+	 * @param {string} str jeglicher String
+	 * @returns den String mit dem ersten Buchstaben groß geschrieben
+	 */
 	function FirstCapitalize(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	}
+
+	/**
+	 * Speichert die Arrays im local storage
+	 */
 	function save() {
 		let titlesAsText = JSON.stringify(props.titles);
 		let pricesAsText = JSON.stringify(props.prices);
@@ -27,17 +40,6 @@ function Products(props) {
 		localStorage.setItem("prices", pricesAsText);
 		localStorage.setItem("amounts", amountsAsText);
 	}
-	// function load() {
-	// 	let titlesAsText = localStorage.getItem("titles");
-	// 	let pricesAsText = localStorage.getItem("prices");
-	// 	let amountsAsText = localStorage.getItem("amounts");
-	// 	if (titlesAsText) {
-	// 		props.titles = JSON.parse(titlesAsText);
-	// 		props.prices = JSON.parse(pricesAsText);
-	// 		props.amounts = JSON.parse(amountsAsText);
-	// 	}
-	// load();
-	// }
 
 	return (
 		<div className={classes.productsWrap}>
@@ -56,7 +58,7 @@ function Products(props) {
 						<FontAwesomeIcon icon={faPlus}></FontAwesomeIcon>
 					</div>
 					<div>
-						<img src={product.image} />
+						<img src={product.image} alt="" />
 					</div>
 					<div>
 						<h3 className={classes.title}>{product.title}</h3>

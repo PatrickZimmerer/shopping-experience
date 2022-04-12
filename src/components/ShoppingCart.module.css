@@ -18,10 +18,8 @@
 }
 
 .amountCounter {
-    background-color: rgb(255, 0, 0);
     color: white;
     position: absolute;
-    border-radius: 100%;
     top: 0;
     height: 24px;
     width: 24px;
